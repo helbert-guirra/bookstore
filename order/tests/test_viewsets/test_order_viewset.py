@@ -8,21 +8,11 @@ from order.factories import OrderFactory, UserFactory
 from order.models import Order
 from product.factories import CategoryFactory, ProductFactory
 from product.models import Product
-from django.contrib.auth.models import User
 
 
 class TestOrderViewSet(APITestCase):
 
     client = APIClient()
-
-    from django.contrib.auth.models import User
-
-def setUp(self):
-    self.user = User.objects.create_user(
-        username="testuser",
-        password="123456"
-    )
-    self.client.force_authenticate(user=self.user)
 
     def setUp(self):
         self.category = CategoryFactory(title="technology")
@@ -38,18 +28,20 @@ def setUp(self):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         order_data = json.loads(response.content)
+        
         self.assertEqual(
             order_data["results"][0]["product"][0]["title"], self.product.title
         )
         self.assertEqual(
-            order_data["results"][0]["product"][0]["price"], self.product.price
+            float(order_data["results"][0]["product"][0]["price"]),
+            float(self.product.price),
         )
         self.assertEqual(
             order_data["results"][0]["product"][0]["active"], self.product.active
         )
         self.assertEqual(
             order_data["results"][0]["product"][0]["category"][0]["title"],
-            self.category.title,
+            self.category.title
         )
 
     def test_create_order(self):

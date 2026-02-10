@@ -15,4 +15,4 @@ class OrderViewSet(ModelViewSet):
     serializer_class = OrderSerializer
 
     # Queryset base usado pelo ViewSet
-    queryset = Order.objects.all()
+    queryset = Order.objects.all().order_by("id")
