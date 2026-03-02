@@ -15,7 +15,6 @@ from rest_framework import routers
 # Aqui está a classe OrderViewSet, que contém as ações da API
 from order import viewsets
 
-
 # Cria uma instância de SimpleRouter
 # O SimpleRouter gera automaticamente rotas REST
 # como list, create, retrieve, update e delete
@@ -36,11 +35,7 @@ router = routers.SimpleRouter()
 #   - order-detail → GET / PUT / DELETE
 #
 # Esse basename é essencial para uso do reverse() nos testes
-router.register(
-    r"order",
-    viewsets.OrderViewSet,
-    basename="order"
-)
+router.register(r"order", viewsets.OrderViewSet, basename="order")
 
 
 # Lista de URLs do app order

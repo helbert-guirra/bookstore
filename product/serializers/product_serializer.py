@@ -5,9 +5,7 @@ from product.serializers.category_serializer import CategorySerializer
 
 class ProductSerializer(serializers.ModelSerializer):
     categories_id = serializers.PrimaryKeyRelatedField(
-        queryset=Category.objects.all(),
-        many=True,
-        write_only=True
+        queryset=Category.objects.all(), many=True, write_only=True
     )
 
     category = CategorySerializer(many=True, read_only=True)
@@ -23,7 +21,6 @@ class ProductSerializer(serializers.ModelSerializer):
             "category",
             "categories_id",
         ]
-
 
     def create(self, validated_data):
         categories_data = validated_data.pop("categories_id")

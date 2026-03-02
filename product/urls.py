@@ -16,7 +16,6 @@ from rest_framework import routers
 # - CategoryViewSet: gerencia operações CRUD de categorias
 from product import viewsets
 
-
 # Cria uma instância de SimpleRouter
 # O SimpleRouter gera automaticamente as rotas REST padrão:
 # - list   (GET)
@@ -43,11 +42,7 @@ router = routers.SimpleRouter()
 #   Nome base das rotas geradas:
 #   - product-list
 #   - product-detail
-router.register(
-    r"product",
-    viewsets.ProductViewSet,
-    basename="product"
-)
+router.register(r"product", viewsets.ProductViewSet, basename="product")
 
 
 # Registra o ViewSet de categorias
@@ -66,11 +61,7 @@ router.register(
 #   Nome base das rotas geradas:
 #   - category-list
 #   - category-detail
-router.register(
-    r"category",
-    viewsets.CategoryViewSet,
-    basename="category"
-)
+router.register(r"category", viewsets.CategoryViewSet, basename="category")
 
 
 # Lista de URLs do app product
