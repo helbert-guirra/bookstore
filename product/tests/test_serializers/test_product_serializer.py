@@ -10,8 +10,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class ProductSerializer(serializers.ModelSerializer):
     categories_id = serializers.ListField(
-        child=serializers.IntegerField(),
-        write_only=True
+        child=serializers.IntegerField(), write_only=True
     )
 
     category = CategorySerializer(many=True, read_only=True)
@@ -23,8 +22,8 @@ class ProductSerializer(serializers.ModelSerializer):
             "title",
             "price",
             "active",
-            "category",       
-            "categories_id",  
+            "category",
+            "categories_id",
         ]
 
     def create(self, validated_data):
