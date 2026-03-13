@@ -31,6 +31,8 @@ jobs:
         run: poetry install
 
       - name: Run tests
-        run: |
-          export DJANGO_SETTINGS_MODULE=bookstore.settings
-          poetry run pytest
+        env:
+            DJANGO_SETTINGS_MODULE: bookstore.settings
+            SECRET_KEY: django-insecure-test
+        run: poetry run pytest
+
