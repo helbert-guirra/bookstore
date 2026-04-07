@@ -21,3 +21,10 @@ local_settings.py
 # Sistema operacional
 .DS_Store
 Thumbs.db
+
+#pyre type checker
+.pyre/
+
+__pycache__
+*.pyc 
+db.sqlite3
