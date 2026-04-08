@@ -38,4 +38,4 @@ COPY . .
 EXPOSE 8000
 
 # Comando padrão para rodar o servidor
-CMD ["sh", "-c", "poetry run python manage.py migrate && poetry run gunicorn bookstore.wsgi:application --bind 0.0.0.0:$PORT"]
+CMD ["sh", "-c", "poetry run python manage.py migrate && poetry run python create_superuser.py && poetry run gunicorn bookstore.wsgi:application --bind 0.0.0.0:$PORT"]
