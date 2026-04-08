@@ -12,6 +12,7 @@ db.sqlite3
 local_settings.py
 
 # Variáveis de ambiente
+.env.dev
 .env
 
 # IDEs

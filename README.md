@@ -4,6 +4,12 @@ Aplicação **Bookstore** desenvolvida no curso de Backend em Python da EBAC.
 
 ---
 
+## 🌐 Deploy
+
+API disponível em: https://bookstore-mtp5.onrender.com
+
+---
+
 ## 🚀 Tecnologias utilizadas
 
 - Python 3.5+
@@ -11,6 +17,10 @@ Aplicação **Bookstore** desenvolvida no curso de Backend em Python da EBAC.
 - Docker
 - Docker Compose
 - Django
+- Django REST Framework
+- PostgreSQL
+- GitHub Actions
+- Render
 
 ---
 
@@ -30,8 +40,8 @@ Antes de começar, você precisa ter instalado em sua máquina:
 Clone o repositório:
 
 ```bash
-git clone git@github.com:drsantos20/bookstore.git
-````
+git clone git@github.com:helbert-guirra/bookstore.git
+```
 
 Acesse a pasta do projeto:
 
@@ -84,17 +94,26 @@ docker-compose exec web python manage.py migrate
 Execute os testes dentro do container:
 
 ```bash
-docker-compose exec web python manage.py test
+docker-compose exec web pytest
+```
+
+---
+
+## 🔑 Variáveis de ambiente
+
+Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
+
+```env
+SECRET_KEY=sua-chave-secreta
+DEBUG=1
+DJANGO_ALLOWED_HOSTS=localhost
+DATABASE_URL=sqlite:///db.sqlite3
 ```
 
 ---
 
 ## 📌 Observações
 
-* Certifique-se de que o Docker esteja rodando antes de executar os comandos.
-* O projeto utiliza o Django como framework principal.
-
-```
-
-Se quiser, depois posso te ajudar a deixar isso ainda mais forte pra recrutador (com descrição do problema, features e prints).
-```
+- Certifique-se de que o Docker esteja rodando antes de executar os comandos.
+- O projeto utiliza o Django REST Framework para construção da API.
+- Em produção o deploy é feito automaticamente no Render a cada push na branch `main` via GitHub Actions.
