@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: bookstore
+    runtime: docker
+    plan: free
+    buildCommand: ""
+    startCommand: gunicorn bookstore.wsgi:application --bind 0.0.0.0:$PORT
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: bookstore.settings
+    preDeployCommand: python manage.py migrate && python manage.py collectstatic --noinput  
